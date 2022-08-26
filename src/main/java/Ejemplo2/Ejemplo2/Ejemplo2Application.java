@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication (exclude ={SecurityAutoConfiguration.class})
-@RestController
 public class Ejemplo2Application {
 
 	@GetMapping("/hello")

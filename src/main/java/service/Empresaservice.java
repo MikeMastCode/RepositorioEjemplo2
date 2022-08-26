@@ -30,6 +30,13 @@ public class Empresaservice {
         }
         return false;
     }
+public boolean  deleteEmpresa(Integer id){
+        empresaRepository.deleteById();
+        if(getEmpresaById(id) != null){
+            return false;
+        }
+        return true;
+}
 
 }
 
