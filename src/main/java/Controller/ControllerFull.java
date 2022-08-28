@@ -35,4 +35,34 @@ public class ControllerFull {
     }
     return "redirect:/agregarEmpresa";
     }
+
+    @GetMapping("/EditarEmpresa/{id}")
+    public String editarEmpresa(Model model, @PathVariable Integer id){
+
+  Empresa emp = empresaService.getEmpresaById(id);
+        model.addAttribute("emp", emp);
+        return "editarEmpresa";
+    }
+
+
+    @PostMapping("/ActualizarEmpresa")
+    public String updateEmpresa(Empresa emp) {
+        if (empresaService.saveOrUpdateEmpresa(emp)) {
+            return "redirect:/verEmpresa";
+        }
+        return "redirect:/EditarEmpresa";
+    }
+
+    @GetMapping("/EliminarEmpresa/{id}")
+    public String eliminarEmpresa(@PathVariable Integer id){
+        try{
+empresaService.deleteEmpresa(id);
+        }
+        catch (Exception e){
+            return"redirect:/VerEmpresas";
+        }
+        return"redirect:/VerEmpresas";
+    }
+
 }
+
